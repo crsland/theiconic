@@ -1,22 +1,40 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $(document).ready(function(){
     
+    var section = $('#content');
     
     $("#search").on('submit',function(e){
         e.stopPropagation();
         e.preventDefault();
-        var url = 'app/search.php';
-        var data = $("#search").serializeArray();
+        
+        section.html("");
+        
+        var noResultsMsg = "No results were found.";
+        var errMsg = "Service error, please try again.";
+        
+        var url = 'app/Search.php';
+        var data = $(this).serializeArray();
         $.post(url,data,function(r){
-            console.log(JSON.parse(r));
-            //console.log(r);
-
-
-        });        
+            console.log(r);
+            var data = JSON.parse(r);
+           if (data.error !== true) {
+               if (data.items.length) {
+                   buildNodes(data.items);
+               } else {
+                   section.html(noResultsMsg);
+               }
+               
+           } else {
+               // Service error
+               section.html(errMsg);
+           }
+        });
     });
+    
+    function buildNodes(data){
+        var articles = "";
+        data.forEach(function(v,i){
+            articles += '<article><h4><a href="' + v.link + '">'+ v.title +'</a></h4><p>' + v.description + '</p><a></article>';
+        });
+        section.append(articles);
+    }
 });

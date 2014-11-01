@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchEngine;
+namespace App\Repos\SearchEngine;
 
 /* 
  * To change this license header, choose License Headers in Project Properties.

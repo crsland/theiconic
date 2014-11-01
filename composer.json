@@ -1,5 +1,22 @@
 {
+    "name" : "crsland",
+    "description" : "TheIconic Test",
+    "authors" : [
+        {
+            "name" : "Carlos Luque",
+            "email" : "crsland@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*",
+        "facebook/webdriver": "dev-master"
+    },    
     "require": {
         "pimple/pimple": "~3.0"
+    },
+    "autoload": {
+        "classmap" : [
+            "app/"
+        ]
     }
 }

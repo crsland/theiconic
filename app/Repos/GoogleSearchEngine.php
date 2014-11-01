@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchEngine;
+namespace App\Repos\SearchEngine;
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -39,7 +39,6 @@ class GoogleSearchEngine implements SearchEngineRepository
     {
         $dom = new \DOMDocument();
         $html = @$dom->loadHTML($data);
-        
         $output = [];
         
         if ($html) {
@@ -52,14 +51,10 @@ class GoogleSearchEngine implements SearchEngineRepository
                        ->getElementsByTagName('a')
                        ->item(0)
                        ->getAttribute('href');
-               
                $needle = '/url?q=';
-               
                if (strpos($link,$needle) === 0) {
                    $link = substr($link, strlen($needle));
                }
-               
-               //var_dump($children->item(0)->getElementsByTagName('a')->item(0)->getAttribute('href'));die;
                $output[] = [
                    'title' => $children->item(0)->textContent,
                    'link' => $link,
