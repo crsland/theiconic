@@ -11,14 +11,15 @@
         <div id="main" role="main">
             <header>
                 <h1>Search Page</h1>
-                <form name="search" id="search">
-                    <label for="query">Name</label>
-                    <input type="text" name="query" id="query" />
+                <form name="search" id="search" action="app/Search.php">
+                    <label for="query">Search</label>
+                    <input type="text" name="query" id="query" placeholder="Search" />
                     <label for="searchEngine"></label>
                     <select name="searchEngine" id="searchEngine">
                         <option value="google">Google</option>
                         <option value="yahoo">Yahoo</option>
                         <option value="bing">Bing</option>
+                        <option value="gigablast">GigaBlast</option>
                     </select>
                     <input type="submit" name="send" id="send" value="Send >" />
                 </form>                
@@ -27,4 +28,3 @@
         </div>
     </body>
 </html>
-<link href="css/styles.css" rel="stylesheet" type="text/css"/>

@@ -12,7 +12,16 @@
         "facebook/webdriver": "dev-master"
     },    
     "require": {
-        "pimple/pimple": "~3.0"
+        "behat/behat": "2.4.*@stable",
+        "pimple/pimple": "~3.0",
+        "behat/mink": "1.4.*@stable",
+        "behat/mink-extension": "*",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*"        
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin/"
     },
     "autoload": {
         "classmap" : [

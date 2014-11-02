@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Repos\\SearchEngine\\BingSearchEngine' => $baseDir . '/app/Repos/BingSearchEngine.php',
+    'App\\Repos\\SearchEngine\\GigaBlastSearchEngine' => $baseDir . '/app/Repos/GigaBlastSearchEngine.php',
     'App\\Repos\\SearchEngine\\GoogleSearchEngine' => $baseDir . '/app/Repos/GoogleSearchEngine.php',
     'App\\Repos\\SearchEngine\\SearchEngineRepository' => $baseDir . '/app/Repos/SearchEngineRepository.php',
     'App\\Repos\\SearchEngine\\YahooSearchEngine' => $baseDir . '/app/Repos/YahooSearchEngine.php',
@@ -435,7 +436,7 @@ return array(
     'RemoteWebDriver' => $vendorDir . '/facebook/webdriver/lib/remote/RemoteWebDriver.php',
     'RemoteWebElement' => $vendorDir . '/facebook/webdriver/lib/remote/RemoteWebElement.php',
     'ScriptTimeoutException' => $vendorDir . '/facebook/webdriver/lib/WebDriverExceptions.php',
-    'Search' => $baseDir . '/app/search.php',
+    'Search' => $baseDir . '/app/Search.php',
     'SebastianBergmann\\Diff\\Chunk' => $vendorDir . '/sebastian/diff/src/Chunk.php',
     'SebastianBergmann\\Diff\\Diff' => $vendorDir . '/sebastian/diff/src/Diff.php',
     'SebastianBergmann\\Diff\\Differ' => $vendorDir . '/sebastian/diff/src/Differ.php',

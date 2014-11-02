@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Repos\SearchEngine;
 
 /* 
@@ -7,7 +6,7 @@ namespace App\Repos\SearchEngine;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class GoogleSearchEngine implements SearchEngineRepository
+class GigaBlastSearchEngine implements SearchEngineRepository
 {
     
     public function __construct()
@@ -17,7 +16,7 @@ class GoogleSearchEngine implements SearchEngineRepository
 
     public function search($query)
     {   
-        $url = 'http://www.google.com/search?hl=en&tbo=d&site=&source=hp&q='.urlencode($query);
+        $url = 'http://www.gigablast.com/search?q='.urlencode($query);
         $useragent = "Opera/9.80 (J2ME/MIDP; Opera Mini/4.2.14912/870; U; id) Presto/2.4.15";
         $ch = curl_init ("");
         curl_setopt ($ch, CURLOPT_URL, $url);
@@ -26,6 +25,7 @@ class GoogleSearchEngine implements SearchEngineRepository
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
         $data = curl_exec ($ch);
         curl_close($ch);
+        var_dump($data);die;
         
         return $this->format($data);
     }

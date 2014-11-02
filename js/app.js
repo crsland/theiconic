@@ -10,12 +10,13 @@ $(document).ready(function(){
         
         var noResultsMsg = "No results were found.";
         var errMsg = "Service error, please try again.";
+        var searchResults = "Search results";
         
         var url = 'app/Search.php';
         var data = $(this).serializeArray();
         $.post(url,data,function(r){
-            console.log(r);
-            var data = JSON.parse(r);
+           section.html(searchResults);
+           var data = JSON.parse(r);
            if (data.error !== true) {
                if (data.items.length) {
                    buildNodes(data.items);
