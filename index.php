@@ -17,11 +17,12 @@
                     <label for="searchEngine"></label>
                     <select name="searchEngine" id="searchEngine">
                         <option value="google">Google</option>
+                        <option value="exalead">ExaLead</option>
                         <option value="yahoo">Yahoo</option>
                         <option value="bing">Bing</option>
-                        <option value="gigablast">GigaBlast</option>
                     </select>
-                    <input type="submit" name="send" id="send" value="Send >" />
+                    <label for="Go" style="display: none;">Go</label>
+                    <input type="submit" name="Go" id="Go" value="Go" />
                 </form>                
             </header>
             <section id="content"></section>

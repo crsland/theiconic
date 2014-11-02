@@ -6,7 +6,7 @@ namespace App\Repos\SearchEngine;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class GigaBlastSearchEngine implements SearchEngineRepository
+class ExaLeadSearchEngine implements SearchEngineRepository
 {
     
     public function __construct()
@@ -16,7 +16,7 @@ class GigaBlastSearchEngine implements SearchEngineRepository
 
     public function search($query)
     {   
-        $url = 'http://www.gigablast.com/search?q='.urlencode($query);
+        $url = 'http://www.exalead.com/search/web/results/?q='.urlencode($query);
         $useragent = "Opera/9.80 (J2ME/MIDP; Opera Mini/4.2.14912/870; U; id) Presto/2.4.15";
         $ch = curl_init ("");
         curl_setopt ($ch, CURLOPT_URL, $url);
@@ -25,8 +25,6 @@ class GigaBlastSearchEngine implements SearchEngineRepository
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
         $data = curl_exec ($ch);
         curl_close($ch);
-        var_dump($data);die;
-        
         return $this->format($data);
     }
     
@@ -43,23 +41,23 @@ class GigaBlastSearchEngine implements SearchEngineRepository
         
         if ($html) {
             $xpath = new \DOMXPath($dom);
-            $list = $xpath->query("//div[@id = 'universal']/div[@class = 'web_result']");
-            
+            $list = $xpath->query("//ul[@class = 'media-list']/li[@class = 'media']");
+
             foreach ($list as $textNode) {
-               $children = $textNode->childNodes;
-               $link = $children->item(0)
-                       ->getElementsByTagName('a')
-                       ->item(0)
-                       ->getAttribute('href');
-               $needle = '/url?q=';
-               if (strpos($link,$needle) === 0) {
-                   $link = substr($link, strlen($needle));
-               }
-               $output[] = [
-                   'title' => $children->item(0)->textContent,
-                   'link' => $link,
-                   'description' => $children->item(1)->textContent
-               ];
+                $tmpLink = $xpath->query("div[@class = 'media-body']/a",$textNode);
+                $link = $tmpLink->item(0)->getAttribute('href');
+                
+                $tmpTitle = $xpath->query("div[@class = 'media-body']/h4",$textNode);
+                $title = $tmpTitle->item(0)->textContent;
+
+                $tmpDescription = $xpath->query("div[@class = 'media-body']/p",$textNode);
+                $description = $tmpDescription->item(0)->textContent;
+                
+                $output[] = [
+                    'title' => $title,
+                    'link' => $link,
+                    'description' => $description
+                ];
             }
         }
         return $output;

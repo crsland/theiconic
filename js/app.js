@@ -11,24 +11,34 @@ $(document).ready(function(){
         var noResultsMsg = "No results were found.";
         var errMsg = "Service error, please try again.";
         var searchResults = "Search results";
+        var provideInput = "You are looking for nothing!";
         
         var url = 'app/Search.php';
         var data = $(this).serializeArray();
-        $.post(url,data,function(r){
-           section.html(searchResults);
-           var data = JSON.parse(r);
-           if (data.error !== true) {
-               if (data.items.length) {
-                   buildNodes(data.items);
+        
+        if (document.querySelector('#query').value !== "")
+        {
+            $.post(url,data,function(r){
+
+               console.log(r);
+
+               section.html(searchResults);
+               var data = JSON.parse(r);
+               if (data.error !== true) {
+                   if (data.items.length) {
+                       buildNodes(data.items);
+                   } else {
+                       section.html(noResultsMsg);
+                   }
+
                } else {
-                   section.html(noResultsMsg);
+                   // Service error
+                   section.html(errMsg);
                }
-               
-           } else {
-               // Service error
-               section.html(errMsg);
-           }
-        });
+            });            
+        } else {
+            section.html(provideInput);
+        }
     });
     
     function buildNodes(data){

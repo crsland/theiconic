@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Repos\\SearchEngine\\BingSearchEngine' => $baseDir . '/app/Repos/BingSearchEngine.php',
-    'App\\Repos\\SearchEngine\\GigaBlastSearchEngine' => $baseDir . '/app/Repos/GigaBlastSearchEngine.php',
+    'App\\Repos\\SearchEngine\\ExaLeadSearchEngine' => $baseDir . '/app/Repos/ExaLeadSearchEngine.php',
     'App\\Repos\\SearchEngine\\GoogleSearchEngine' => $baseDir . '/app/Repos/GoogleSearchEngine.php',
     'App\\Repos\\SearchEngine\\SearchEngineRepository' => $baseDir . '/app/Repos/SearchEngineRepository.php',
     'App\\Repos\\SearchEngine\\YahooSearchEngine' => $baseDir . '/app/Repos/YahooSearchEngine.php',

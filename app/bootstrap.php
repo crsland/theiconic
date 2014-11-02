@@ -16,8 +16,8 @@ $container["google"] = function() {
 $container["yahoo"] = function() {
     return new \App\Repos\SearchEngine\YahooSearchEngine();
 };
-$container["gigablast"] = function() {
-    return new \App\Repos\SearchEngine\GigaBlastSearchEngine();
+$container["exalead"] = function() {
+    return new \App\Repos\SearchEngine\ExaLeadSearchEngine();
 };
 $container["bing"] = function() {
     return new \App\Repos\SearchEngine\BingSearchEngine(new Msft_Bing_Search('MYnsjJ64'));

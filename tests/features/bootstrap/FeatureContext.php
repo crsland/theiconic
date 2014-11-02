@@ -6,7 +6,7 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
-
+use Behat\MinkExtension\Context\MinkContext;
 //
 // Require 3rd-party libraries here:
 //
@@ -17,7 +17,7 @@ use Behat\Gherkin\Node\PyStringNode,
 /**
  * Features context.
  */
-class FeatureContext extends BehatContext
+class FeatureContext extends MinkContext
 {
     /**
      * Initializes context.
@@ -30,60 +30,38 @@ class FeatureContext extends BehatContext
         // Initialize your context here
     }
 
-   /**
-    * @Given /^I am on the home page$/
-    */
-   public function iAmOnTheHomePage2()
-   {
-       throw new PendingException();
-   }
+    /**
+     * @When /^I search for "([^"]*)"$/
+     */
+    public function iSearchFor($query)
+    {
+        $this->fillField('query', $query);
+    }
+ 
+    /**
+     * @When /^I press "Go" button$/
+     */
+    public function iPressButton()
+    {
+        $this->pressButton('Go');
+        $this->getSession()->wait('5000','(0 === jQuery.active)');
+    }
 
-   /**
-    * @When /^I fill in "([^"]*)" with "([^"]*)"$/
-    */
-   public function iFillInWith($arg1, $arg2)
-   {
-       throw new PendingException();
-   }
-
-   /**
-    * @Given /^I press the "([^"]*)" button$/
-    */
-   public function iPressTheButton($arg1)
-   {
-       throw new PendingException();
-   }
-
-   /**
-    * @Then /^I should see "([^"]*)"$/
-    */
-   public function iShouldSee($arg1)
-   {
-       throw new PendingException();
-   }
-
-   /**
-    * @Given /^I am on the homepage$/
-    */
-   public function iAmOnTheHomepage()
-   {
-       throw new PendingException();
-   }
-
-   /**
-    * @Given /^I select "([^"]*)"$/
-    */
-   public function iSelect($arg1)
-   {
-       throw new PendingException();
-   }
-
-   /**
-    * @Given /^I press "([^"]*)"$/
-    */
-   public function iPress($arg1)
-   {
-       throw new PendingException();
-   }
-
+    /**
+     * @When /^I click on "Go" button$/
+     */
+    public function iClickOnButton()
+    {
+        $this->pressButton('Go');
+        //$this->getSession()->wait('5000','(0 === jQuery.active)');
+    }    
+    
+    /**
+     * @When /^I select "([^"]*)"$/
+     */
+    public function iSelect($query)
+    {
+        $this->fillField('searchEngine', $query);
+        $this->pressButton('Go');
+    }  
 }
