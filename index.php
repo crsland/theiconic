@@ -23,8 +23,9 @@
                     </select>
                     <label for="Go" style="display: none;">Go</label>
                     <input type="submit" name="Go" id="Go" value="Go" />
-                </form>                
+                </form>
             </header>
+            <img src="img/loader.gif" name="loader" id="loader" alt="Loading..." />
             <section id="content"></section>
         </div>
     </body>

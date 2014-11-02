@@ -1,11 +1,13 @@
 $(document).ready(function(){
     
     var section = $('#content');
+    var loader  = $('#loader');
     
     $("#search").on('submit',function(e){
         e.stopPropagation();
         e.preventDefault();
         
+        loader.show();
         section.html("");
         
         var noResultsMsg = "No results were found.";
@@ -19,9 +21,7 @@ $(document).ready(function(){
         if (document.querySelector('#query').value !== "")
         {
             $.post(url,data,function(r){
-
-               console.log(r);
-
+               loader.hide();
                section.html(searchResults);
                var data = JSON.parse(r);
                if (data.error !== true) {
