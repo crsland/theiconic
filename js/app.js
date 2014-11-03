@@ -22,7 +22,7 @@ $(document).ready(function(){
         {
             $.post(url,data,function(r){
                loader.hide();
-               section.html(searchResults);
+               section.html('<p>' + searchResults + '</p>');
                var data = JSON.parse(r);
                if (data.error !== true) {
                    if (data.items.length) {

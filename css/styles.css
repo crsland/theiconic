@@ -86,25 +86,17 @@ input, select {
 }
 
 /* Content */
+h1{ font-size: 1.8em;margin-bottom: 30px;}
+#main{padding:3em;}
 
-#main{
-    padding:3em;
-}
-
-#main header{
-    margin-bottom:2em;
-}
-#content {
-    position:relative;
-    width : 40em;  
-}
+#main header{margin-bottom:2em;}
+#content {position:relative;width:40em;}
 
 #content article{
     position:relative;
     margin-bottom: 20px;
     width : 100%;
 }
-#content article h4{
-    margin-bottom: 10px;
-}
+#content > p{margin-bottom:10px;}
+#content article h4{margin-bottom: 10px;}
 #loader{display:none;}
