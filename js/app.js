@@ -7,7 +7,6 @@ $(document).ready(function(){
         e.stopPropagation();
         e.preventDefault();
         
-        loader.show();
         section.html("");
         
         var noResultsMsg = "No results were found.";
@@ -20,6 +19,7 @@ $(document).ready(function(){
         
         if (document.querySelector('#query').value !== "")
         {
+            loader.show();
             $.post(url,data,function(r){
                loader.hide();
                section.html('<p>' + searchResults + '</p>');
