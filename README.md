@@ -1,12 +1,14 @@
 # Search Page. Technical Test
 
-it uses **Google**, **ExaLead**, **Yahoo** and **Bing**. But only Google and Exalead return results and Yahoo and Bing
+It uses **Google**, **ExaLead**, **Yahoo** and **Bing**. But only Google and Exalead return valid results and Yahoo and Bing
  are used to see what happens when the search engine fails.
+ 
+The tests were ran under Firefox, chrome - Windows xp, Windows and Linux Mint -.
  
  * Run composer update.
  * Php version >= 5.4
  
- ## Specifications:
+ ## Specs:
  
  * The dropdown will show three options (Yahoo, Bing, Google).
  * When we have valid results, the system should display a list of those results, if the query returns no results, 
