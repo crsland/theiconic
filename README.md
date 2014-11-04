@@ -13,6 +13,7 @@ It uses Dependency Injection. It isolates the methods and allows unit testing be
 The tests were ran under Firefox, chrome - Windows xp, Windows and Linux Mint -.
  
 * Run composer update.
+* In order to run Behat tests, install Selenium server.
 * Php version >= 5.4
  
 ## Specs:
