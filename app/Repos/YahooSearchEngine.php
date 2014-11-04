@@ -15,7 +15,11 @@ class YahooSearchEngine implements SearchEngineRepository
         $this->apiKey = 'dj0yJmk9WVpyZWVsOGd6eEV3JmQ9WVdrOVRWbHVjMnBLTmpRbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1mMw--';
     }
 
-
+    /**
+     * Search
+     * @param string $query The user input
+     * @return array The search results
+     */
     public function search($query)
     {
         $result = $this->getPage(
@@ -26,20 +30,19 @@ class YahooSearchEngine implements SearchEngineRepository
             1,
             5);
         
-        return $result['EXE'];
-        
-        /*$url = 'http://search.yahooapis.com/WebSearchService/V1/webSearch?appid=Y'.$this->apiKey.'&query='.urlencode($query).'&results=10';
-        $ch = curl_init ("");
-        curl_setopt ($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, false); 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);         
-        $data = curl_exec ($ch);
-        curl_close($ch);
-        return $data;*/
-        
+        return $result;
     }
     
-    
+    /**
+     * Get Page
+     * @param string $proxy The user input
+     * @param string $url The user input
+     * @param string $referer The user input
+     * @param string $agent The user input
+     * @param string $header The user input
+     * @param int $timeout The user input
+     * @return array The search results
+     */
     private function getPage($proxy, $url, $referer, $agent, $header, $timeout)
     {
         $ch = curl_init();

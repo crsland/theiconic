@@ -1,9 +1,8 @@
 <?php
 namespace App\Repos\SearchEngine;
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/**
+ * @class BingSearchEngine
  */
 class BingSearchEngine implements SearchEngineRepository
 {
@@ -17,7 +16,11 @@ class BingSearchEngine implements SearchEngineRepository
         $this->bing = $bing;
     }
 
-
+    /**
+     * Search
+     * @param string $query The user input
+     * @return array The search results
+     */
     public function search($query)
     {
         $this->bing->setQuery(urlencode($query))
